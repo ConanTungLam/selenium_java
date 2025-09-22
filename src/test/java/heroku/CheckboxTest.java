@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 public class CheckboxTest {
     @Test
-    void checkedChecbox(){
+    void verifySelectCheckboxesSuccessfully(){
         WebDriver driver = new ChromeDriver();
         driver.get("https://the-internet.herokuapp.com/checkboxes");
 //        driver.findElement(By.xpath("//form[@id='checkboxes']/input[1]")).click();
@@ -28,7 +28,7 @@ public class CheckboxTest {
     }
 
     @Test
-    void uncheckedChecbox(){
+    void verifyUnselectCheckboxesSuccessfully(){
         WebDriver driver = new ChromeDriver();
         driver.get("https://the-internet.herokuapp.com/checkboxes");
 
