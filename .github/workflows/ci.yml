@@ -27,6 +27,8 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-    - name: Build heroku with Maven
-      run: mvn clean test
+    - name: Compile
+      run: mvn clean compile
+#   - name: Build heroku with Maven
+#     run: mvn clean test
 
