@@ -1,30 +1,23 @@
 package heroku;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
+import base.BaseTest;
+import heroku.pages.DragDropPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class DragDropTest {
+public class DragDropTest extends BaseTest {
+
     @Test
-    void verifyMoveAToBSuccessfully(){
-        WebDriver driver = new ChromeDriver();
-        driver.get("https://the-internet.herokuapp.com/drag_and_drop");
-        Actions actions =new Actions(driver);
-        WebElement a = driver.findElement(By.id("column-a"));
-        WebElement b = driver.findElement(By.id("column-b"));
+    void verifyMoveAToBSuccessfully() {
+        DragDropPage dragDropPage = new DragDropPage();
+        dragDropPage.open();
 
-        Assert.assertEquals(a.getText(),"A");
-        Assert.assertEquals(b.getText(),"B");
+        Assert.assertEquals(dragDropPage.getColumAContent(), "A");
+        Assert.assertEquals(dragDropPage.getColumBContent(), "B");
 
-        actions.dragAndDrop(a,b).perform();
+        dragDropPage.dragAndDrop();
 
-        Assert.assertEquals(a.getText(),"B");
-        Assert.assertEquals(b.getText(),"A");
-
-        driver.quit();
+        Assert.assertEquals(dragDropPage.getColumAContent(), "B");
+        Assert.assertEquals(dragDropPage.getColumBContent(), "A");
     }
 }
